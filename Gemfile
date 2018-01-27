@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 
 gem "rails", "5.1.2"
-gem 'pg', '~> 0.21.0'
+gem "pg", "~> 0.21.0"
 gem "puma"
 gem "sass-rails"
 gem "uglifier"
@@ -10,13 +10,15 @@ gem "coffee-rails"
 gem "turbolinks"
 gem "jbuilder"
 gem "therubyracer"
+gem "rename"
+gem "ffaker"
 
 group :development, :test do
   gem "pry"
   gem "pry-byebug"
-  gem "rspec-rails", "~> 3.7"
   gem "capybara"
-  gem "factory_girl_rails"
+  gem "factory_bot"
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -24,6 +26,13 @@ group :development do
   gem "listen"
   gem "spring"
   gem "spring-watcher-listen"
+end
+
+group :test do
+  gem "database_cleaner", "~> 1.5"
+  gem "rspec-rails", "~> 3.7"
+  gem "simplecov"
+  gem "shoulda-matchers", "~> 3.0"
 end
 
 group :doc do
