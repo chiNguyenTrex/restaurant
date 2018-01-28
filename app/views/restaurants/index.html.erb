@@ -1,0 +1,6 @@
+<h1>Restaurants</h1>
+<% if @restaurants %>
+  <% @restaurants.each do |restaurant| %>
+    <div><%= "#{restaurant.name} - #{restaurant.address}" %></div>
+  <% end %>
+<% end %>

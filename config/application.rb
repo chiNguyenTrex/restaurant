@@ -1,14 +1,8 @@
 require_relative 'boot'
 
-require "rails"
+require "rails/all"
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "sprockets/railtie"
+
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -25,6 +19,11 @@ module RestaurantServices
     # -- all .rb files in that directory are automatically loaded.
 
     # Don't generate system test files.
+
+    config.generators do |generator|
+      generator.assets false
+      # generator.view_specs false
+    end
     config.generators.system_tests = nil
   end
 end

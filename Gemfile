@@ -12,13 +12,14 @@ gem "jbuilder"
 gem "therubyracer"
 gem "rename"
 gem "ffaker"
+gem "bootstrap-sass", "3.3.7"
+gem "jquery-rails"
 
 group :development, :test do
   gem "pry"
   gem "pry-byebug"
-  gem "capybara"
   gem "factory_bot"
-  gem 'factory_bot_rails'
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -29,6 +30,10 @@ group :development do
 end
 
 group :test do
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "chromedriver-helper"
+
   gem "database_cleaner", "~> 1.5"
   gem "rspec-rails", "~> 3.7"
   gem "simplecov"
