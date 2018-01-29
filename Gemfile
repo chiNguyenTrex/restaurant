@@ -38,6 +38,7 @@ group :test do
   gem "rspec-rails", "~> 3.7"
   gem "simplecov"
   gem "shoulda-matchers", "~> 3.0"
+  gem "rails-controller-testing"
 end
 
 group :doc do
