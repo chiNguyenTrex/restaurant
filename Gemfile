@@ -30,9 +30,10 @@ group :development do
 end
 
 group :test do
-  gem "capybara"
+  gem "capybara", "~> 2.7" # Simulate browser requests with HTTP
   gem "selenium-webdriver"
   gem "chromedriver-helper"
+  gem 'poltergeist'
 
   gem "database_cleaner", "~> 1.5"
   gem "rspec-rails", "~> 3.7"

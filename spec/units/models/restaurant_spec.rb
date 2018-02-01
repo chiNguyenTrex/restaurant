@@ -20,7 +20,7 @@ RSpec.describe Restaurant, type: :model do
       it "should raise right messages error" do
         expect(restaurant_no_name.valid?).to be_falsy
         expect(restaurant_no_name.errors.messages.size).to eq 1
-        expect(restaurant_no_name.errors.messages.values.flatten[0]).to match /can't be blank/
+        expect(restaurant_no_name.errors.messages.values.flatten[0]).to match /must be fill in/
       end
     end
 
@@ -28,7 +28,7 @@ RSpec.describe Restaurant, type: :model do
       it "should raise right messages error" do
         expect(restaurant_no_address.valid?).to be_falsy
         expect(restaurant_no_address.errors.messages.size).to eq 1
-        expect(restaurant_no_address.errors.messages.values.flatten[0]).to match /can't be blank/
+        expect(restaurant_no_address.errors.messages.values.flatten[0]).to match /must be fill in/
       end
     end
 

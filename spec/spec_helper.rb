@@ -16,6 +16,8 @@
 
 require "simplecov"
 SimpleCov.start
+require "capybara/rails"
+require 'capybara/poltergeist'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -98,3 +100,14 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+# TEST IN REAL CHROME BROWSERS
+# Capybara.register_driver :selenium do |app|
+#   Capybara::Selenium::Driver.new(app, browser: :chrome)
+# end
+# Capybara.javascript_driver = :chrome
+# Capybara.configure do |config|
+#   config.default_driver = :selenium
+# end
+
+Capybara.javascript_driver = :poltergeist

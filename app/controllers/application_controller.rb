@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
   def extract_locale
-    locale = params[:locale].strip
-    if locale.present? && I18n.available_locales.include?(locale.to_sym)
+    locale = params[:locale]
+    if locale.present? && I18n.available_locales.include?(locale.strip.to_sym)
       session[:language] = locale
     end
     session[:language]
