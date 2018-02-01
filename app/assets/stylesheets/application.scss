@@ -22,3 +22,17 @@
   padding-top: 20px;
 }
 
+
+.field-compulsory:after {
+  content: " *";
+  color: red;
+  font-weight: bold;
+}
+
+.language-change {
+  margin-left: 10px;
+}
+
+#header {
+  margin-bottom: 50px;
+}

@@ -49,10 +49,60 @@ RSpec.describe RestaurantsController, type: :controller do
       end
 
       it "should raise right flash message" do
-        expect(flash[:danger]).to eq I18n.t "restaurant.show_message"
+        expect(flash[:danger]).to eq I18n.t "restaurant.controller.show_message"
       end
 
       it "should redirect to index action" do
+        expect(response).to redirect_to action: :index
+      end
+    end
+  end
+
+  describe "GET #new" do
+    before {get :new}
+
+    it "should return http status code success" do
+      expect(response).to have_http_status :success
+    end
+
+    it "should initiate a new restaurant instance" do
+      restaurant = assigns :restaurant
+      expect(restaurant.attributes.values.any?).to be_falsy
+    end
+
+    it "should render new template" do
+      expect(response).to render_template :new
+    end
+  end
+
+  describe "POST #create" do
+    context "with invalid form input" do
+      it "should create restaurant failed if no name" do
+        expect do
+          post :create, params: {restaurant: {address: "Testing address"}}
+        end.to_not change(Restaurant, :count)
+        expect(response).to render_template :new
+        expect(flash[:warning]).to eq I18n.t "restaurant.controller.create_failed"
+        expect((assigns :restaurant).valid?).to be_falsy
+      end
+
+      it "should create restaurant failed if no address" do
+        expect do
+          post :create, params: {restaurant: {name: "Testing name"}}
+        end.to_not change(Restaurant, :count)
+        expect(response).to render_template :new
+        expect(flash[:warning]).to eq I18n.t "restaurant.controller.create_failed"
+        expect((assigns :restaurant).valid?).to be_falsy
+      end
+    end
+
+    context "with valid form input" do
+      it "should create restaurant success" do
+        expect do
+          post :create, params: {restaurant: {name: "Testing name", address: "Testing address"}}
+        end.to change(Restaurant, :count).by 1
+        expect((assigns :restaurant).valid?).to be_truthy
+        expect(flash[:success]).to eq I18n.t "restaurant.controller.create_success"
         expect(response).to redirect_to action: :index
       end
     end

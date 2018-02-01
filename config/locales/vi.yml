@@ -1,3 +1,31 @@
 vi:
   restaurant:
-    show_message: "Nhà hàng không tồn tại"
+    controller:
+      show_message: "Nhà hàng không tồn tại"
+      create_failed: "Khởi tạo nhà hàng thất bại"
+      create_success: "Khởi tạo nhà hàng thành công"
+    view:
+      change_locale:
+        vietnamese: "Tiếng Việt"
+        english: "Tiếng Anh"
+      list_res: "Danh sách nhà hàng"
+      show_link: "Chi tiết"
+      new_link: "Tạo mới nhà hàng"
+      submit_create_form_title: "Tạo mới"
+      address_title: "Địa chỉ:"
+  activerecord:
+    models:
+      restaurant: "Nhà hàng"
+    attributes:
+      restaurant:
+        name: "Tên nhà hàng"
+        address: "Địa chỉ nhà hàng"
+    errors:
+      models:
+        restaurant:
+          attributes:
+            name:
+              blank: "không được bỏ trống"
+            address:
+              blank: "không được bỏ trống"
+

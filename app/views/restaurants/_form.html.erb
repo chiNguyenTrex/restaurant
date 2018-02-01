@@ -1,0 +1,16 @@
+<%= form_with model: @restaurant, local: true do |form| %>
+  <%= render "shared/error_messages", object: form.object %>
+  <div class="col-md-4">
+    <div class="form-group">
+      <%= form.label :name, class: "field-compulsory" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :address, class: "field-compulsory" %>
+      <%= form.text_field :address, class: "form-control" %>
+    </div>
+
+    <%= form.submit yield(:button_text), class: "btn btn-info" %>
+  </div>
+<% end %>

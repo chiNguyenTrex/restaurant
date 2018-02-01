@@ -1,3 +1,31 @@
 en:
   restaurant:
-    show_message: "Restaurant doesn't exist"
+    controller:
+      show_message: "Restaurant doesn't exist"
+      create_failed: "Create restaurant failed"
+      create_success: "Create restaurant successfully"
+    view:
+      change_locale:
+        vietnamese: "Vietnamese"
+        english: "English"
+      list_res: "Restaurants"
+      show_link: "Show"
+      new_link: "New restaurant"
+      submit_create_form_title: "Create"
+      address_title: "Address:"
+  activerecord:
+    models:
+      restaurant: "Restaurant"
+    attributes:
+      restaurant:
+        name: "Name"
+        address: "Address"
+    errors:
+      models:
+        restaurant:
+          attributes:
+            name:
+              blank: "must be fill in"
+            address:
+              blank: "must be fill in"
+

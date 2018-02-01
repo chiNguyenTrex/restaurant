@@ -7,7 +7,8 @@
   </head>
   <body>
     <div class="container">
-      <%= render "shared/flash" %>
+      <header id="header"><%= render "shared/change_locale" %></header>
+      <div class="row"><%= render "shared/flash" %></div>
       <%= yield %>
     </div>
   </body>

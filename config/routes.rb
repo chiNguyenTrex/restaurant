@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  resources :restaurants
-  root to: "restaurants#index"
+  #scope "(:locale)", locale: /en|vi/ do
+    resources :restaurants
+    root to: "restaurants#index"
+  #end
 end
