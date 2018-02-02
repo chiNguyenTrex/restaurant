@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :restaurant do
-    name FFaker::Company.name
-    address "#{FFaker::Address.street_address}, #{FFaker::Address.city}, #{FFaker::Address.country}"
+    name {FFaker::Company.unique.name}
+    address do
+      "#{FFaker::Address.unique.street_address}, #{FFaker::Address.unique.city}, "\
+        "#{FFaker::Address.unique.country}"
+    end
   end
 end

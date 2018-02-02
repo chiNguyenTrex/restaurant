@@ -1,7 +1,7 @@
 <h3 class="text-info"><%= t "restaurant.view.list_res" %></h3>
 <% if @restaurants %>
   <% @restaurants.each do |restaurant| %>
-    <div>
+    <div class="restaurant-<%= restaurant.id %>">
       <%= "#{restaurant.name} - #{restaurant.address}" %> -
       <i><%= link_to t("restaurant.view.show_link"), restaurant %></i> -
       <i>
