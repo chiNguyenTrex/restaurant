@@ -4,6 +4,9 @@ vi:
       show_message: "Nhà hàng không tồn tại"
       create_failed: "Khởi tạo nhà hàng thất bại"
       create_success: "Khởi tạo nhà hàng thành công"
+      update_success: "Cập nhật thông tin nhà hàng thành công"
+      update_failed: "Cập nhật thất bại"
+      delete_success: "Nhà hàng được xóa thành công"
     view:
       change_locale:
         vietnamese: "Tiếng Việt"
@@ -13,6 +16,10 @@ vi:
       new_link: "Tạo mới nhà hàng"
       submit_create_form_title: "Tạo mới"
       address_title: "Địa chỉ:"
+      submit_update_form_title: "Cập nhật"
+      update_title: "Cập nhật thông tin cửa hàng"
+      update_link: "Cập nhật"
+      delete_link: "Xóa"
   activerecord:
     models:
       restaurant: "Nhà hàng"

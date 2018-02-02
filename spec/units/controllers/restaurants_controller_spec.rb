@@ -66,8 +66,8 @@ RSpec.describe RestaurantsController, type: :controller do
     end
 
     it "should initiate a new restaurant instance" do
-      restaurant = assigns :restaurant
-      expect(restaurant.attributes.values.any?).to be_falsy
+      # expect((assigns :restaurant).attributes.values.any?).to be_falsy
+      expect(assigns :restaurant).to be_a_new Restaurant
     end
 
     it "should render new template" do
@@ -105,6 +105,85 @@ RSpec.describe RestaurantsController, type: :controller do
         expect(flash[:success]).to eq I18n.t "restaurant.controller.create_success"
         expect(response).to redirect_to action: :index
       end
+    end
+  end
+
+  describe "GET #edit" do
+    context "with available resource" do
+      before {get :edit, params: {id: restaurant_one}}
+
+      it "should return success http status code" do
+        expect(response).to have_http_status :success
+      end
+
+      it "should retrieve right restaurant" do
+        expect(assigns :restaurant).to eq restaurant_one
+      end
+
+      it "should render edit template view" do
+        expect(response).to render_template :edit
+      end
+    end
+
+    context "with resource do not exist" do
+      before {get :edit, params: {id: 999}}
+
+      it "should redirect to index" do
+        expect(response).to redirect_to restaurants_path
+      end
+
+      it "should generate flash message" do
+        expect(flash[:danger]).to eq "Restaurant doesn't exist"
+      end
+
+      it "should have redirect status code" do
+        expect(response).to have_http_status :redirect
+      end
+    end
+  end
+
+  describe "PATCH #update" do
+    context "with valid form input" do
+      it "then restaurant must be update successfully" do
+        patch_update "Updated name", "Updated address"
+
+        restaurant = assigns :restaurant
+        expect(restaurant.name).to eq "Updated name"
+        expect(restaurant.address).to eq "Updated address"
+        expect(flash[:success]).to eq "Update restaurant successfully"
+        expect(response).to redirect_to restaurants_path
+      end
+    end
+
+    context "with invalid form input" do
+      it "update failed if no name" do
+        patch_update "", "Updated address"
+
+        expect(flash[:danger]).to eq "Update restaurant failed"
+        expect(response).to render_template :edit
+      end
+
+      it "update failed if no address" do
+        patch_update "Updated name", ""
+
+        expect(flash[:danger]).to eq "Update restaurant failed"
+        expect(response).to render_template :edit
+      end
+    end
+
+    def patch_update name, address
+      patch :update, params: {id: restaurant_one,
+          restaurant: {name: name, address: address}}
+    end
+  end
+
+  describe "DELETE #destroy" do
+    it "should delete successfully" do
+      expect do
+        delete :destroy, params: {id: restaurant_one}
+      end.to change(Restaurant, :count).by -1
+      expect(flash[:success]).to eq "Restaurant deleted successfully"
+      expect(response).to redirect_to restaurants_path
     end
   end
 end

@@ -3,7 +3,13 @@
   <% @restaurants.each do |restaurant| %>
     <div>
       <%= "#{restaurant.name} - #{restaurant.address}" %> -
-      <i><%= link_to t("restaurant.view.show_link"), restaurant %></i>
+      <i><%= link_to t("restaurant.view.show_link"), restaurant %></i> -
+      <i>
+        <%= link_to t("restaurant.view.update_link"), edit_restaurant_path(restaurant) %>
+      </i> -
+      <i>
+        <%= link_to t("restaurant.view.delete_link"), restaurant_path(restaurant), method: :delete %>
+      </i>
     </div>
   <% end %>
 <% end %>
